@@ -1,0 +1,351 @@
+import React, { useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
+import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+import { Camera, Mail, MapPin, Phone, Instagram, ShoppingCart, Trash2 } from "lucide-react";
+
+// ---------------------------------------------------------------------------
+// THE DISTORTED APERTURE — Minimal documentary portfolio + print store
+// Edit the values below, then deploy to Vercel and connect the domain:
+// thedistortedaperture.com
+// ---------------------------------------------------------------------------
+
+const SITE = {
+  title: "The Distorted Aperture",
+  tagline: "Documentary projects & archival prints.",
+  cta: "View Projects",
+  email: "hi@thedistortedaperture.com", // ← change if you prefer another alias
+  phone: "", // optional
+  location: "Bangkok, Thailand",
+  instagram: "https://instagram.com/thedistortedaperture",
+};
+
+// ---- Projects (replace with your real work) --------------------------------
+const PROJECTS = [
+  {
+    slug: "sea-gypsies",
+    title: "Sea Gypsies of the Andaman",
+    desc: "A long-form look at Chao Ley communities navigating change.",
+    cover: "https://picsum.photos/seed/sea/1200/900",
+    tags: ["Documentary", "Andaman"],
+  },
+  {
+    slug: "faces-of-protest",
+    title: "Faces of Protest",
+    desc: "Portraits from Thailand's 2020–2022 democracy movement.",
+    cover: "https://picsum.photos/seed/protest/1200/900",
+    tags: ["Portrait", "Thailand"],
+  },
+  {
+    slug: "monsoon-quiet",
+    title: "Monsoon Quiet",
+    desc: "Minimalist seascapes shot on 35mm film.",
+    cover: "https://picsum.photos/seed/monsoon/1200/900",
+    tags: ["Landscape", "35mm"],
+  },
+];
+
+// ---- Print store (example products; swap images + prices) -------------------
+const PRINTS = [
+  {
+    id: "print-01",
+    title: "Low Tide, Railey",
+    img: "https://picsum.photos/seed/print1/900/1200",
+    prices: { "A4": 60, "A3": 110, "A2": 180 },
+    paper: "Hahnemühle Photo Rag 308gsm",
+    edition: "Open edition",
+  },
+  {
+    id: "print-02",
+    title: "After the Storm, Bangkok",
+    img: "https://picsum.photos/seed/print2/900/1200",
+    prices: { "A4": 60, "A3": 110, "A2": 180 },
+    paper: "Hahnemühle Photo Rag 308gsm",
+    edition: "Open edition",
+  },
+  {
+    id: "print-03",
+    title: "Andaman Horizon",
+    img: "https://picsum.photos/seed/print3/900/1200",
+    prices: { "A4": 60, "A3": 110, "A2": 180 },
+    paper: "Hahnemühle Photo Rag 308gsm",
+    edition: "Open edition",
+  },
+];
+
+// Utility
+const fmt = (n) => new Intl.NumberFormat(undefined, { style: "currency", currency: "USD" }).format(n);
+
+function Nav({ cartCount }) {
+  return (
+    <nav className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/60 border-b">
+      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="#home" className="font-semibold tracking-tight text-xl">
+          {SITE.title}
+        </a>
+        <div className="hidden md:flex items-center gap-6 text-sm">
+          <a href="#projects" className="hover:opacity-70">Projects</a>
+          <a href="#prints" className="hover:opacity-70">Prints</a>
+          <a href="#about" className="hover:opacity-70">About</a>
+          <a href="#contact" className="hover:opacity-70">Contact</a>
+          <a href={SITE.instagram} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:opacity-80">
+            <Instagram className="w-4 h-4" /> Instagram
+          </a>
+          <a href="#cart" className="flex items-center gap-2 hover:opacity-80">
+            <ShoppingCart className="w-4 h-4" />
+            <span>{cartCount}</span>
+          </a>
+        </div>
+        <a href="#cart" className="md:hidden text-sm underline flex items-center gap-2">
+          <ShoppingCart className="w-4 h-4" /> {cartCount}
+        </a>
+      </div>
+    </nav>
+  );
+}
+
+function Hero() {
+  return (
+    <header id="home" className="relative">
+      <div
+        className="h-[60vh] md:h-[70vh] w-full bg-cover bg-center"
+        style={{ backgroundImage: "url(https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2000&auto=format&fit=crop)" }}
+      >
+        <div className="h-full w-full bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+      </div>
+      <div className="absolute inset-0 flex items-end md:items-center">
+        <div className="max-w-6xl mx-auto px-6 pb-10 md:pb-0">
+          <div className="text-white max-w-2xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 rounded-full bg-white/10 border backdrop-blur">
+                <Camera className="w-5 h-5" />
+              </div>
+              <p className="text-sm uppercase tracking-widest opacity-90">Documentary Photography</p>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-semibold leading-tight">{SITE.title}</h1>
+            <p className="mt-3 md:mt-4 text-base md:text-lg opacity-90">{SITE.tagline}</p>
+            <div className="mt-6 flex gap-3">
+              <a href="#projects"><Button size="lg" className="rounded-2xl px-6">{SITE.cta}</Button></a>
+              <a href="#prints" className="text-white underline underline-offset-4">Buy Prints</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function Projects() {
+  const [query, setQuery] = useState("");
+  const results = useMemo(() => {
+    if (!query) return PROJECTS;
+    const q = query.toLowerCase();
+    return PROJECTS.filter((p) => p.title.toLowerCase().includes(q) || p.tags.join(" ").toLowerCase().includes(q));
+  }, [query]);
+
+  return (
+    <section id="projects" className="max-w-6xl mx-auto px-6 py-16">
+      <div className="flex items-end justify-between gap-6 mb-6">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Projects</h2>
+          <p className="opacity-70 mt-2 max-w-xl">Long-form stories and series. Replace covers and copy with your own.</p>
+        </div>
+        <div className="w-56"><Input placeholder="Search projects…" value={query} onChange={(e) => setQuery(e.target.value)} /></div>
+      </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {results.map((p) => (
+          <Card key={p.slug} className="overflow-hidden group">
+            <a href={`#${p.slug}`}>
+              <div className="aspect-[4/3] w-full overflow-hidden">
+                <img src={p.cover} alt={p.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+              <CardContent className="p-4">
+                <h3 className="font-medium">{p.title}</h3>
+                <p className="text-sm opacity-70 mt-1">{p.desc}</p>
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {p.tags.map((t) => (
+                    <span key={t} className="text-xs px-2 py-1 rounded-full border bg-muted/30">{t}</span>
+                  ))}
+                </div>
+              </CardContent>
+            </a>
+          </Card>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Prints({ addToCart }) {
+  const [selectedSize, setSelectedSize] = useState({});
+  const choose = (id) => selectedSize[id] || Object.keys(PRINTS.find((p) => p.id === id).prices)[0];
+
+  return (
+    <section id="prints" className="bg-muted/30 border-y">
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="flex items-end justify-between gap-6 mb-6">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Prints</h2>
+            <p className="opacity-70 mt-2 max-w-2xl">Archival pigment prints, signed. Select a size and add to cart. Hook real checkout via Snipcart, Lemon Squeezy, Shopify Buy Button, or PayPal later.</p>
+          </div>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PRINTS.map((p) => (
+            <Card key={p.id} className="overflow-hidden group">
+              <div className="aspect-[3/4] w-full overflow-hidden bg-white">
+                <img src={p.img} alt={p.title} className="h-full w-full object-cover" loading="lazy" />
+              </div>
+              <CardContent className="p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-medium">{p.title}</h3>
+                  <span className="text-sm opacity-70">{p.edition}</span>
+                </div>
+                <div className="text-sm opacity-80">{p.paper}</div>
+                <div className="flex items-center gap-3">
+                  <Select onValueChange={(v) => setSelectedSize((s) => ({ ...s, [p.id]: v }))}>
+                    <SelectTrigger className="w-28"><SelectValue placeholder={choose(p.id)} /></SelectTrigger>
+                    <SelectContent>
+                      {Object.keys(p.prices).map((size) => (
+                        <SelectItem value={size} key={size}>{size} — {fmt(p.prices[size])}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <Button className="rounded-2xl" onClick={() => addToCart({
+                    id: `${p.id}-${choose(p.id)}`,
+                    title: `${p.title} (${choose(p.id)})`,
+                    price: p.prices[choose(p.id)],
+                    img: p.img,
+                    meta: { size: choose(p.id) },
+                  })}>Add to cart</Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section id="about">
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">About</h2>
+        <div className="mt-4 grid md:grid-cols-5 gap-8 items-start">
+          <div className="md:col-span-3 space-y-4">
+            <p className="opacity-80 leading-relaxed">I focus on human stories across South and Southeast Asia — everyday resilience, quiet rituals, and the textures of place. Working across portrait, documentary, and landscape, often on film.</p>
+            <p className="opacity-80 leading-relaxed">Ethical storytelling and collaboration sit at the heart of my practice. For assignments, exhibitions or prints, get in touch.</p>
+          </div>
+          <div className="md:col-span-2 space-y-2 text-sm">
+            {SITE.location && (<div className="flex items-center gap-2"><MapPin className="w-4 h-4"/> {SITE.location}</div>)}
+            {SITE.email && (<div className="flex items-center gap-2"><Mail className="w-4 h-4"/> {SITE.email}</div>)}
+            {SITE.phone && (<div className="flex items-center gap-2"><Phone className="w-4 h-4"/> {SITE.phone}</div>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="max-w-3xl mx-auto px-6 py-16">
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Get in touch</h2>
+      <p className="opacity-70 mt-2">For assignments, collaborations, exhibitions, or prints — drop a note.</p>
+      <form
+        className="mt-6 grid gap-4"
+        onSubmit={(e) => {
+          e.preventDefault();
+          alert("Thanks! This demo form doesn't send yet. Hook it to Formspree/Basin or a Vercel serverless function.");
+        }}
+      >
+        <div className="grid md:grid-cols-2 gap-4">
+          <Input placeholder="Your name" required />
+          <Input placeholder="Email" type="email" required />
+        </div>
+        <Input placeholder="Subject" />
+        <Textarea placeholder="Message" className="min-h-32" required />
+        <Button type="submit" className="rounded-2xl">Send message</Button>
+      </form>
+    </section>
+  );
+}
+
+function Cart({ items, remove, clear }) {
+  const total = items.reduce((s, it) => s + it.price * (it.qty || 1), 0);
+  return (
+    <section id="cart" className="max-w-6xl mx-auto px-6 py-12">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Cart</h2>
+        {items.length > 0 && (
+          <Button variant="outline" onClick={clear}>Clear</Button>
+        )}
+      </div>
+      {items.length === 0 ? (
+        <p className="opacity-70">Your cart is empty.</p>
+      ) : (
+        <div className="space-y-4">
+          {items.map((it) => (
+            <div key={it.id} className="flex items-center gap-4 border rounded-xl p-3">
+              <img src={it.img} alt={it.title} className="w-16 h-16 object-cover rounded" />
+              <div className="flex-1">
+                <div className="font-medium">{it.title}</div>
+                <div className="text-sm opacity-70">{it.meta?.size}</div>
+              </div>
+              <div className="text-sm">{fmt(it.price)}</div>
+              <button onClick={() => remove(it.id)} className="p-2 hover:bg-muted rounded-md" aria-label="Remove"><Trash2 className="w-4 h-4"/></button>
+            </div>
+          ))}
+          <div className="flex items-center justify-between pt-2 border-t">
+            <div className="text-sm opacity-70">Shipping calculated at checkout</div>
+            <div className="flex items-center gap-4">
+              <div className="font-medium">Total: {fmt(total)}</div>
+              <Button className="rounded-2xl" onClick={() => alert("Connect a real checkout (Snipcart, Lemon Squeezy, Shopify Buy Button, or PayPal).")}>Checkout</Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="border-t">
+      <div className="max-w-6xl mx-auto px-6 py-8 text-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>© {new Date().getFullYear()} {SITE.title}. All rights reserved.</p>
+        <div className="flex items-center gap-4 opacity-80">
+          {SITE.email && (<a href={`mailto:${SITE.email}`} className="hover:opacity-100">Email</a>)}
+          <a href={SITE.instagram} target="_blank" rel="noreferrer" className="hover:opacity-100">Instagram</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default function DistortedApertureSite() {
+  const [cart, setCart] = useState([]);
+  const addToCart = (item) => setCart((c) => {
+    const exists = c.find((x) => x.id === item.id);
+    return exists ? c : [...c, { ...item, qty: 1 }];
+  });
+  const remove = (id) => setCart((c) => c.filter((x) => x.id !== id));
+  const clear = () => setCart([]);
+
+  return (
+    <div className="font-sans text-gray-900">
+      <Nav cartCount={cart.length} />
+      <Hero />
+      <Projects />
+      <Prints addToCart={addToCart} />
+      <About />
+      <Contact />
+      <Cart items={cart} remove={remove} clear={clear} />
+      <Footer />
+    </div>
+  );
+}
