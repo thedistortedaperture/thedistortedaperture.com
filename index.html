@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Distorted Aperture</title>
+    <meta name="description" content="The Distorted Aperture — analog film photography. Portfolio, documentary work, and fine art prints.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar">
+        <a class="nav-logo" href="#home" data-view="home">The Distorted Aperture</a>
+
+        <ul class="nav-links">
+            <li><a href="#home"        data-view="home"        class="active">Home</a></li>
+            <li><a href="#portfolio"   data-view="portfolio">Portfolio</a></li>
+            <li><a href="#documentary" data-view="documentary">Documentary</a></li>
+            <li><a href="#shop"        data-view="shop">Prints</a></li>
+            <li><a href="#contact"     data-view="contact">Contact</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <nav class="nav-drawer" id="navDrawer">
+        <a href="#home"        data-view="home">Home</a>
+        <a href="#portfolio"   data-view="portfolio">Portfolio</a>
+        <a href="#documentary" data-view="documentary">Documentary</a>
+        <a href="#shop"        data-view="shop">Prints</a>
+        <a href="#contact"     data-view="contact">Contact</a>
+    </nav>
+
+    <!-- ==================== MAIN ==================== -->
+    <main id="app-container">
+
+        <!-- ========== HOME ========== -->
+        <section id="home" class="view active">
+            <div class="hero">
+                <div class="hero-bg"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-caption">
+                    <p class="label">Film Photography</p>
+                    <h1>The Distorted<br>Aperture</h1>
+                    <p>Capturing the world in grain, light, and silver.</p>
+                    <button class="hero-cta" data-view="portfolio">
+                        View Portfolio
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 7H13M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PORTFOLIO ========== -->
+        <section id="portfolio" class="view">
+            <div class="page-header">
+                <div>
+                    <p class="label">Selected Works</p>
+                    <h2>Portfolio</h2>
+                </div>
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="street">Street</button>
+                    <button class="filter-btn" data-filter="landscape">Landscape</button>
+                    <button class="filter-btn" data-filter="portrait">Portrait</button>
+                </div>
+            </div>
+
+            <div class="gallery-grid" id="gallery-container">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ========== DOCUMENTARY ========== -->
+        <section id="documentary" class="view">
+            <div class="page-header">
+                <div>
+                    <p class="label">Long-form Projects</p>
+                    <h2>Documentary</h2>
+                </div>
+            </div>
+
+            <div class="doc-grid" id="doc-container">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ========== SHOP / PRINTS ========== -->
+        <section id="shop" class="view">
+            <div class="page-header">
+                <div>
+                    <p class="label">Fine Art Prints</p>
+                    <h2>Print Shop</h2>
+                </div>
+            </div>
+
+            <div class="shop-intro">
+                <p>All prints are produced on archival Hahnemühle Photo Rag 308 gsm paper. Each edition is limited, hand-signed, and numbered. Shipping worldwide.</p>
+            </div>
+
+            <div class="shop-grid" id="shop-container">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="shop-note">
+                <p>Prints are made to order and ship within 10–14 business days. For custom sizes or framing inquiries, <a href="#contact" data-view="contact" style="border-bottom: 1px solid currentColor;">get in touch</a>.</p>
+            </div>
+        </section>
+
+        <!-- ========== CONTACT ========== -->
+        <section id="contact" class="view">
+            <div class="contact-layout">
+
+                <div class="contact-left">
+                    <div>
+                        <p class="label" style="margin-bottom: 16px;">Get in Touch</p>
+                        <h2>Let's talk about your project, a print, or&nbsp;anything in between.</h2>
+                        <p>Whether you're interested in commissioning work, licensing an image, or simply want to connect — I'd love to hear from you.</p>
+
+                        <div class="contact-details">
+                            <div class="contact-detail-item">
+                                <p class="label">Email</p>
+                                <!-- TODO: Replace with your actual email address -->
+                                <a href="mailto:hello@thedistortedaperture.com">hello@thedistortedaperture.com</a>
+                            </div>
+                            <div class="contact-detail-item">
+                                <p class="label">Based in</p>
+                                <span>New Delhi, India</span>
+                            </div>
+                            <div class="contact-detail-item">
+                                <p class="label">Available for</p>
+                                <span>Commissions · Licensing · Exhibitions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <!-- TODO: Replace # with your actual social links -->
+                        <a href="#" target="_blank" rel="noopener">Instagram</a>
+                        <a href="#" target="_blank" rel="noopener">VSCO</a>
+                        <a href="#" target="_blank" rel="noopener">Behance</a>
+                    </div>
+                </div>
+
+                <div class="contact-right">
+                    <h3>Send a message</h3>
+
+                    <!--
+                        FORMSPREE SETUP:
+                        1. Go to https://formspree.io and create a free account.
+                        2. Create a new form — you'll get a unique endpoint URL.
+                        3. Replace "YOUR_FORM_ID" below with your form ID (e.g. xpznqwkv).
+                        That's it — submissions will be emailed to you automatically.
+                    -->
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="">Select a topic…</option>
+                                <option value="print">Print order enquiry</option>
+                                <option value="commission">Commission</option>
+                                <option value="licensing">Image licensing</option>
+                                <option value="exhibition">Exhibition / collaboration</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell me about your project or enquiry…" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+
+                    <div class="form-success" id="form-success">
+                        Thank you — your message has been sent. I'll be in touch within 48 hours.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <span class="footer-logo">The Distorted Aperture</span>
+        <span class="footer-copy">&copy; <span id="year"></span> · All images reserved</span>
+    </footer>
+
+    <!-- ==================== LIGHTBOX ==================== -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8592;</button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8594;</button>
+        <div class="lightbox-inner">
+            <img src="" alt="" id="lightboxImg">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

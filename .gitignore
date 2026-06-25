@@ -1,0 +1,7 @@
+# Exclude original high-resolution scans (too large for GitHub — use assets/images/ instead)
+assets/Mamiya*/
+assets/.DS_Store
+
+# macOS system files
+.DS_Store
+**/.DS_Store
