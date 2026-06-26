@@ -17,7 +17,7 @@ const SITE = {
   title: "The Distorted Aperture",
   tagline: "Documentary projects & archival prints.",
   cta: "View Projects",
-  email: "hi@thedistortedaperture.com", // ← change if you prefer another alias
+  email: "samyak.dhoke@pm.me", // ← change if you prefer another alias
   phone: "", // optional
   location: "Bangkok, Thailand",
   instagram: "https://instagram.com/thedistortedaperture",
