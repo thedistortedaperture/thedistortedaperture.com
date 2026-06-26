@@ -16,48 +16,81 @@ document.addEventListener('DOMContentLoaded', () => {
      * Categories: 'street' | 'landscape' | 'portrait'
      */
     const works = [
-        // — Vietnam, Mamiya 645 · Fuji Pro 400H —
-        { src: 'assets/images/vietnam-01.jpg', title: 'Vietnam I',   desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/vietnam-02.jpg', title: 'Vietnam II',  desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/vietnam-03.jpg', title: 'Vietnam III', desc: 'Mamiya 645 · Fuji Pro 400H', category: 'portrait' },
-        { src: 'assets/images/vietnam-04.jpg', title: 'Vietnam IV',  desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/vietnam-05.jpg', title: 'Vietnam V',   desc: 'Mamiya 645 · Fuji Pro 400H', category: 'portrait' },
-        { src: 'assets/images/vietnam-06.jpg', title: 'Vietnam VI',  desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/vietnam-07.jpg', title: 'Vietnam VII', desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/vietnam-08.jpg', title: 'Vietnam VIII',desc: 'Mamiya 645 · Fuji Pro 400H', category: 'portrait' },
-        { src: 'assets/images/vietnam-09.jpg', title: 'Vietnam IX',  desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/vietnam-10.jpg', title: 'Vietnam X',   desc: 'Mamiya 645 · Fuji Pro 400H', category: 'landscape' },
-        { src: 'assets/images/vietnam-11.jpg', title: 'Vietnam XI',  desc: 'Mamiya 645 · Fuji Pro 400H', category: 'landscape' },
-        { src: 'assets/images/vietnam-12.jpg', title: 'Vietnam XII', desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
+        // — Alleppy, Kerala — Kodak VISION3 250D (35mm) —
+        { src: 'assets/images/alleppy-vision3-35mm-01.jpg', title: 'Alleppy - Kodak VISION3 250D (35mm)', desc: 'Alleppy, Kerala, India', category: 'landscape' },
+        { src: 'assets/images/alleppy-vision3-35mm-02.jpg', title: 'Alleppy - Kodak VISION3 250D (35mm)', desc: 'Alleppy, Kerala, India', category: 'landscape' },
+        { src: 'assets/images/alleppy-vision3-35mm-03.jpg', title: 'Alleppy - Kodak VISION3 250D (35mm)', desc: 'Alleppy, Kerala, India', category: 'portrait' },
 
-        // — Bangkok, Mamiya 645 · Fuji Pro 400H —
-        { src: 'assets/images/bangkok-01.jpg', title: 'Bangkok I',   desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/bangkok-02.jpg', title: 'Bangkok II',  desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/bangkok-03.jpg', title: 'Bangkok III', desc: 'Mamiya 645 · Fuji Pro 400H', category: 'portrait' },
-        { src: 'assets/images/bangkok-04.jpg', title: 'Bangkok IV',  desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/bangkok-05.jpg', title: 'Bangkok V',   desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/bangkok-06.jpg', title: 'Bangkok VI',  desc: 'Mamiya 645 · Fuji Pro 400H', category: 'portrait' },
-        { src: 'assets/images/bangkok-07.jpg', title: 'Bangkok VII', desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/bangkok-08.jpg', title: 'Bangkok VIII',desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/bangkok-09.jpg', title: 'Bangkok IX',  desc: 'Mamiya 645 · Fuji Pro 400H', category: 'landscape' },
-        { src: 'assets/images/bangkok-10.jpg', title: 'Bangkok X',   desc: 'Mamiya 645 · Fuji Pro 400H', category: 'street' },
-        { src: 'assets/images/bangkok-11.jpg', title: 'Bangkok XI',  desc: 'Mamiya 645 · Fuji Pro 400H', category: 'portrait' },
+        // — Bangkok — Kentmere 400 (35mm) —
+        { src: 'assets/images/bangkok-kentmere400-35mm-01.jpg', title: 'Bangkok - Kentmere 400 (35mm)', desc: 'Bangkok, Thailand', category: 'street' },
+        { src: 'assets/images/bangkok-kentmere400-35mm-02.jpg', title: 'Bangkok - Kentmere 400 (35mm)', desc: 'Bangkok, Thailand', category: 'street' },
 
-        // — Mamiya 645 · Kodak Gold 200 —
-        { src: 'assets/images/kodak-01.jpg', title: 'Kodak I',    desc: 'Mamiya 645 · Kodak Gold 200', category: 'landscape' },
-        { src: 'assets/images/kodak-02.jpg', title: 'Kodak II',   desc: 'Mamiya 645 · Kodak Gold 200', category: 'landscape' },
-        { src: 'assets/images/kodak-03.jpg', title: 'Kodak III',  desc: 'Mamiya 645 · Kodak Gold 200', category: 'portrait' },
-        { src: 'assets/images/kodak-04.jpg', title: 'Kodak IV',   desc: 'Mamiya 645 · Kodak Gold 200', category: 'landscape' },
-        { src: 'assets/images/kodak-05.jpg', title: 'Kodak V',    desc: 'Mamiya 645 · Kodak Gold 200', category: 'landscape' },
-        { src: 'assets/images/kodak-06.jpg', title: 'Kodak VI',   desc: 'Mamiya 645 · Kodak Gold 200', category: 'portrait' },
-        { src: 'assets/images/kodak-07.jpg', title: 'Kodak VII',  desc: 'Mamiya 645 · Kodak Gold 200', category: 'landscape' },
-        { src: 'assets/images/kodak-08.jpg', title: 'Kodak VIII', desc: 'Mamiya 645 · Kodak Gold 200', category: 'portrait' },
-        { src: 'assets/images/kodak-09.jpg', title: 'Kodak IX',   desc: 'Mamiya 645 · Kodak Gold 200', category: 'landscape' },
-        { src: 'assets/images/kodak-10.jpg', title: 'Kodak X',    desc: 'Mamiya 645 · Kodak Gold 200', category: 'street' },
-        { src: 'assets/images/kodak-11.jpg', title: 'Kodak XI',   desc: 'Mamiya 645 · Kodak Gold 200', category: 'landscape' },
-        { src: 'assets/images/kodak-12.jpg', title: 'Kodak XII',  desc: 'Mamiya 645 · Kodak Gold 200', category: 'landscape' },
-        { src: 'assets/images/kodak-13.jpg', title: 'Kodak XIII', desc: 'Mamiya 645 · Kodak Gold 200', category: 'portrait' },
-        { src: 'assets/images/kodak-14.jpg', title: 'Kodak XIV',  desc: 'Mamiya 645 · Kodak Gold 200', category: 'landscape' },
+        // — Bangkok — Fuji Pro 400H (120) —
+        { src: 'assets/images/bangkok-fujipro400h-120-01.jpg', title: 'Bangkok - Fuji Pro 400H (120)', desc: 'Bangkok, Thailand', category: 'street' },
+        { src: 'assets/images/bangkok-fujipro400h-120-02.jpg', title: 'Bangkok - Fuji Pro 400H (120)', desc: 'Bangkok, Thailand', category: 'landscape' },
+
+        // — Bangkok — Kodak VISION3 250D (35mm) —
+        { src: 'assets/images/bangkok-vision3-35mm-01.jpg', title: 'Bangkok - Kodak VISION3 250D (35mm)', desc: 'Bangkok, Thailand', category: 'street' },
+
+        // — Bangkok — Berlin Kino B&W (120) —
+        { src: 'assets/images/bangkok-berlinkino-120-01.jpg', title: 'Bangkok - Berlin Kino B&W (120)', desc: 'Bangkok, Thailand', category: 'portrait' },
+
+        // — Bangkok — Kodak Gold 200 (120) —
+        { src: 'assets/images/bangkok-kodakgold200-120-01.jpg', title: 'Bangkok - Kodak Gold 200 (120)', desc: 'Bangkok, Thailand', category: 'street' },
+
+        // — Bodhgaya — Kodak Gold 200 (120) —
+        { src: 'assets/images/bodhgaya-kodakgold200-120-01.jpg', title: 'Bodhgaya - Kodak Gold 200 (120)', desc: 'Bodhgaya, India', category: 'landscape' },
+        { src: 'assets/images/bodhgaya-kodakgold200-120-02.jpg', title: 'Bodhgaya - Kodak Gold 200 (120)', desc: 'Bodhgaya, India', category: 'landscape' },
+
+        // — Borobudur — Kodak Gold 200 (35mm) —
+        { src: 'assets/images/borobudur-kodakgold200-35mm-01.jpg', title: 'Borobudur - Kodak Gold 200 (35mm)', desc: 'Borobudur, Indonesia', category: 'landscape' },
+        { src: 'assets/images/borobudur-kodakgold200-35mm-02.jpg', title: 'Borobudur - Kodak Gold 200 (35mm)', desc: 'Borobudur, Indonesia', category: 'landscape' },
+
+        // — Chongqing — Kodak Colourplus 200 (35mm) —
+        { src: 'assets/images/chongqing-colourplus200-35mm-01.jpg', title: 'Chongqing - Kodak Colourplus 200 (35mm)', desc: 'Chongqing, China', category: 'street' },
+        { src: 'assets/images/chongqing-colourplus200-35mm-02.jpg', title: 'Chongqing - Kodak Colourplus 200 (35mm)', desc: 'Chongqing, China', category: 'street' },
+
+        // — Gowargondi — Kodak Gold 200 (120) —
+        { src: 'assets/images/gowargondi-kodakgold200-120-01.jpg', title: 'Gowargondi - Kodak Gold 200 (120)', desc: 'Gowargondi, India', category: 'landscape' },
+        { src: 'assets/images/gowargondi-kodakgold200-120-02.jpg', title: 'Gowargondi - Kodak Gold 200 (120)', desc: 'Gowargondi, India', category: 'landscape' },
+
+        // — Jaipur — Kodak Gold 200 (35mm) —
+        { src: 'assets/images/jaipur-kodakgold200-35mm-01.jpg', title: 'Jaipur - Kodak Gold 200 (35mm)', desc: 'Jaipur, India', category: 'street' },
+        { src: 'assets/images/jaipur-kodakgold200-35mm-02.jpg', title: 'Jaipur - Kodak Gold 200 (35mm)', desc: 'Jaipur, India', category: 'street' },
+
+        // — Kochi — Kodak VISION3 250D (35mm) —
+        { src: 'assets/images/kochi-vision3-35mm-01.jpg', title: 'Kochi - Kodak VISION3 250D (35mm)', desc: 'Kochi, India', category: 'landscape' },
+        { src: 'assets/images/kochi-vision3-35mm-02.jpg', title: 'Kochi - Kodak VISION3 250D (35mm)', desc: 'Kochi, India', category: 'street' },
+
+        // — Mount Bromo — Kodak Gold 200 (35mm) —
+        { src: 'assets/images/bromo-kodakgold200-35mm-01.jpg', title: 'Mount Bromo - Kodak Gold 200 (35mm)', desc: 'East Java, Indonesia', category: 'landscape' },
+        { src: 'assets/images/bromo-kodakgold200-35mm-02.jpg', title: 'Mount Bromo - Kodak Gold 200 (35mm)', desc: 'East Java, Indonesia', category: 'landscape' },
+
+        // — Mumbai — Kodak Eastman Double-X 5222 (35mm) —
+        { src: 'assets/images/mumbai-doublex5222-35mm-01.jpg', title: 'Mumbai - Kodak Double-X 5222 (35mm)', desc: 'Mumbai, India', category: 'landscape' },
+        { src: 'assets/images/mumbai-doublex5222-35mm-02.jpg', title: 'Mumbai - Kodak Double-X 5222 (35mm)', desc: 'Mumbai, India', category: 'street' },
+
+        // — Patani — Kodak Gold 200 (35mm) —
+        { src: 'assets/images/patani-kodakgold200-35mm-01.jpg', title: 'Patani - Kodak Gold 200 (35mm)', desc: 'Patani, Thailand', category: 'landscape' },
+        { src: 'assets/images/patani-kodakgold200-35mm-02.jpg', title: 'Patani - Kodak Gold 200 (35mm)', desc: 'Patani, Thailand', category: 'landscape' },
+
+        // — Saigon — Fuji Pro 400H (120) —
+        { src: 'assets/images/saigon-fujipro400h-120-01.jpg', title: 'Saigon - Fuji Pro 400H (120)', desc: 'Saigon, Vietnam', category: 'street' },
+        { src: 'assets/images/saigon-fujipro400h-120-02.jpg', title: 'Saigon - Fuji Pro 400H (120)', desc: 'Saigon, Vietnam', category: 'street' },
+
+        // — Sangkhla Buri — Kodak ProImage 100 (35mm) —
+        { src: 'assets/images/sangkhla-primage100-35mm-01.jpg', title: 'Sangkhla Buri - Kodak ProImage 100 (35mm)', desc: 'Sangkhla Buri, Thailand', category: 'landscape' },
+
+        // — Songkhla — Kodak Gold 200 (35mm) —
+        { src: 'assets/images/songkhla-kodakgold200-35mm-01.jpg', title: 'Songkhla - Kodak Gold 200 (35mm)', desc: 'Songkhla, Thailand', category: 'street' },
+        { src: 'assets/images/songkhla-kodakgold200-35mm-02.jpg', title: 'Songkhla - Kodak Gold 200 (35mm)', desc: 'Songkhla, Thailand', category: 'street' },
+
+        // — Udon Thani — Kodak Gold 200 (35mm) —
+        { src: 'assets/images/udon-kodakgold200-35mm-01.jpg', title: 'Udon Thani - Kodak Gold 200 (35mm)', desc: 'Udon Thani, Thailand', category: 'portrait' },
+        { src: 'assets/images/udon-kodakgold200-35mm-02.jpg', title: 'Udon Thani - Kodak Gold 200 (35mm)', desc: 'Udon Thani, Thailand', category: 'portrait' },
+
+        // — Yogyakarta — Kodak VISION3 250D (35mm) —
+        { src: 'assets/images/yogyakarta-vision3-35mm-01.jpg', title: 'Yogyakarta - Kodak VISION3 250D (35mm)', desc: 'Yogyakarta, Indonesia', category: 'portrait' },
     ];
 
     /*
@@ -77,27 +110,27 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const docProjects = [
         {
-            cover: 'assets/images/vietnam-05.jpg',
-            title: 'Vietnam',
+            cover: 'assets/images/saigon-fujipro400h-120-01.jpg',
+            title: 'The Moken Project',
             year: '2024',
+            tag: 'Documentary · Human Rights',
+            desc: 'The Moken are a sea nomadic people of the Mergui Archipelago, caught between centuries of maritime tradition and the pressures of modernity. This project documents their communities, their relationship with the sea, and the slow erosion of a way of life.',
+            link: '#'
+        },
+        {
+            cover: 'assets/images/bangkok-fujipro400h-120-01.jpg',
+            title: 'Southeast Asia',
+            year: '2023–2024',
             tag: 'Street · Travel',
-            desc: 'Shot on a Mamiya 645 loaded with Fuji Pro 400H, this series moves through the streets, markets, and quieter corners of Vietnam — medium format grain meeting the warmth of Southeast Asian light.',
+            desc: 'Across Bangkok, Saigon, Patani, Sangkhla Buri, and Songkhla — a medium format exploration of Southeast Asian street life, shot on Fuji Pro 400H and Kodak Gold through the Mamiya 645.',
             link: '#'
         },
         {
-            cover: 'assets/images/bangkok-03.jpg',
-            title: 'Bangkok',
-            year: '2024',
-            tag: 'Street · Portrait',
-            desc: 'Bangkok through the Mamiya — candid portraits and street scenes from a city that never holds still. Fuji Pro 400H renders the heat and colour with a softness that digital can\'t quite reach.',
-            link: '#'
-        },
-        {
-            cover: 'assets/images/kodak-04.jpg',
-            title: 'Kodak Gold',
-            year: '2023',
+            cover: 'assets/images/bodhgaya-kodakgold200-120-01.jpg',
+            title: 'The Indian Subcontinent',
+            year: '2023–2024',
             tag: 'Landscape · Portrait',
-            desc: 'A roll of Kodak Gold 200 through the Mamiya 645. Warm, a little nostalgic, slightly imperfect — exactly what analogue is for.',
+            desc: 'From the ghats of Bodhgaya to the backwaters of Alleppy and the streets of Mumbai and Jaipur — India on film, in colour and grain.',
             link: '#'
         },
     ];
@@ -123,40 +156,58 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const prints = [
         {
-            src: 'assets/images/vietnam-01.jpg',
-            title: 'Vietnam I',
+            src: 'assets/images/alleppy-vision3-35mm-01.jpg',
+            title: 'Alleppy - Kodak VISION3 250D (35mm)',
             edition: 'Edition of 25',
             sizes: ['20×30 cm', '40×60 cm', '60×90 cm'],
-            price: 'from €85',
+            price: '£40',
             stripeLink: '#stripe-link-placeholder',
             badge: 'Limited Edition'
         },
         {
-            src: 'assets/images/bangkok-08.jpg',
-            title: 'Bangkok VIII',
+            src: 'assets/images/bangkok-fujipro400h-120-01.jpg',
+            title: 'Bangkok - Fuji Pro 400H (120)',
             edition: 'Edition of 20',
             sizes: ['30×40 cm', '50×70 cm'],
-            price: 'from €95',
+            price: '£40',
             stripeLink: '#stripe-link-placeholder',
             badge: null
         },
         {
-            src: 'assets/images/vietnam-09.jpg',
-            title: 'Vietnam IX',
-            edition: 'Edition of 15',
-            sizes: ['40×60 cm', '60×90 cm'],
-            price: 'from €120',
+            src: 'assets/images/bodhgaya-kodakgold200-120-01.jpg',
+            title: 'Bodhgaya - Kodak Gold 200 (120)',
+            edition: 'Edition of 20',
+            sizes: ['30×40 cm', '50×70 cm'],
+            price: '£40',
             stripeLink: '#stripe-link-placeholder',
             badge: null
         },
         {
-            src: 'assets/images/kodak-11.jpg',
-            title: 'Kodak XI',
-            edition: 'Open Edition',
-            sizes: ['20×30 cm', '30×45 cm'],
-            price: 'from €65',
+            src: 'assets/images/bromo-kodakgold200-35mm-01.jpg',
+            title: 'Mount Bromo - Kodak Gold 200 (35mm)',
+            edition: 'Edition of 25',
+            sizes: ['20×30 cm', '40×60 cm'],
+            price: '£40',
             stripeLink: '#stripe-link-placeholder',
             badge: 'New'
+        },
+        {
+            src: 'assets/images/saigon-fujipro400h-120-01.jpg',
+            title: 'Saigon - Fuji Pro 400H (120)',
+            edition: 'Edition of 20',
+            sizes: ['30×40 cm', '50×70 cm'],
+            price: '£40',
+            stripeLink: '#stripe-link-placeholder',
+            badge: null
+        },
+        {
+            src: 'assets/images/mumbai-doublex5222-35mm-01.jpg',
+            title: 'Mumbai - Kodak Double-X 5222 (35mm)',
+            edition: 'Edition of 25',
+            sizes: ['20×30 cm', '40×60 cm'],
+            price: '£40',
+            stripeLink: '#stripe-link-placeholder',
+            badge: null
         },
     ];
 
