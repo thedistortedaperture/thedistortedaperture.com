@@ -233,7 +233,7 @@ h1, h2, h3, h4 {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: url('assets/images/vietnam-01.jpg') center/cover no-repeat;
+    background: url('assets/images/hero.jpg') center/cover no-repeat;
     transition: transform 8s var(--ease);
     transform: scale(1.03);
 }
@@ -1060,16 +1060,16 @@ form {
 }
 
 .about-text p {
-    font-family: var(--font-serif);
-    font-size: 1.15rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
     line-height: 1.8;
     color: var(--text);
     margin-bottom: 1.4em;
 }
 
 .about-intro {
-    font-size: 1.3rem !important;
-    line-height: 1.7 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.8 !important;
 }
 
 .about-details {
@@ -1115,5 +1115,125 @@ form {
 
     .about-layout {
         padding: 60px 24px 80px;
+    }
+}
+
+/* =============================================
+   DOCUMENTARY DETAIL VIEW
+   ============================================= */
+
+.doc-detail {
+    display: none;
+    padding: 40px 40px 120px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.doc-detail.active {
+    display: block;
+}
+
+.doc-back {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 48px;
+    transition: border-color var(--transition), background var(--transition);
+}
+
+.doc-back:hover {
+    border-color: var(--text);
+    background: var(--off-white);
+}
+
+.doc-detail-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+}
+
+.doc-detail-header .label {
+    margin-bottom: 8px;
+}
+
+.doc-detail-header h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 300;
+    margin-bottom: 12px;
+}
+
+.doc-detail-header p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.doc-detail-intro {
+    margin-bottom: 56px;
+}
+
+.doc-detail-intro p {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--text);
+    max-width: 680px;
+}
+
+.doc-detail-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.doc-photo {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.doc-photo img {
+    width: 100%;
+    display: block;
+    padding: 8px;
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+
+.doc-photo figcaption {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 14px;
+    padding-left: 2px;
+    font-style: italic;
+}
+
+.doc-link-btn {
+    display: inline-block;
+    margin-top: 56px;
+    padding: 12px 28px;
+    border: 1px solid var(--text);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background var(--transition), color var(--transition);
+}
+
+.doc-link-btn:hover {
+    background: var(--text);
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    .doc-detail {
+        padding: 24px 20px 80px;
     }
 }
